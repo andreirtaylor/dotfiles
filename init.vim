@@ -55,8 +55,13 @@ if dein#check_install()
   call dein#install()
 endif
 
-" Deoplete Settings
-let g:deoplete#enable_at_startup = 1
+" YouCompleteMe Settings
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
+"let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_min_num_of_chars_for_completion = 2
 
 "End dein Scripts-------------------------
 set expandtab

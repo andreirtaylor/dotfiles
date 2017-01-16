@@ -4,10 +4,8 @@ FILES=".bashrc .git .gitconfig .profile .tmux.conf .zshenv .zshrc"
 DOTFILE_DIR=$(pwd)
 
 for FILE in $FILES; do
-  rm ~/$FILE
-  ln -s $DOTFILE_DIR/$FILE ~/$FILE
+  ln -sf $DOTFILE_DIR/$FILE ~/$FILE
 done
 
-rm ~/.config/nvim/init.vim
-echo $DOTFILE_DIR
-ln -s $DOTFILE_DIR/init.vim ~/.config/nvim/init.vim
+ln -sf $DOTFILE_DIR/init.vim ~/.config/nvim/init.vim
+ln -sf $DOTFILE_DIR/.ycm_extra_conf.py ~/.config/nvim/.ycm_extra_conf.py
