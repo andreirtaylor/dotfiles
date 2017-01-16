@@ -38,8 +38,7 @@ call dein#add('airblade/vim-gitgutter')
 call dein#add('keith/tmux.vim')
 " Golang bundles
 call dein#add('fatih/vim-go')
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('zchee/deoplete-go', {'build': 'make'})
+call dein#add('Valloric/YouCompleteMe',{'build': './install.py --clang-completer --gocode-complete --tern-completer'})
 
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
