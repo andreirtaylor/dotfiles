@@ -41,6 +41,14 @@ alias nwrs="sudo service network-manager restart"
 alias drmall='docker rm -f $(docker ps -a -q)'
 alias drmiall='docker rmi -f $(docker images -q)'
 
+# School stuff
+alias school="~/Dropbox/UVic"
+alias csc320="~/Dropbox/UVic/CSC320"
+alias ceng455="~/Dropbox/UVic/CENG455"
+alias seng474="~/Dropbox/UVic/SENG474"
+alias csc360="~/Dropbox/UVic/CSC360"
+alias csc370="~/Dropbox/UVic/CSC370"
+
 # Go stuff
 export GOPATH="$HOME/github/go"
 

@@ -83,11 +83,6 @@ setopt extendedglob
 unsetopt beep # prevent terminal beeping (fuck that noise)
 bindkey -v # zsh vim-mode
 
-# set zsh prompt
-autoload -Uz promptinit
-promptinit
-prompt pure
-
 fpath=(~/.zsh/completion $fpath)
 
 # You may need to manually set your language environment
