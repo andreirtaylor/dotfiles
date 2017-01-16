@@ -1,11 +1,13 @@
 #!/bin/bash
 
-FILES=".gitconfig .tmux.conf .vimrc .xinitrc .Xmodmap .Xresources .zlogin .zpreztorc .zshrc"
+FILES=".bashrc .git .gitconfig .profile .tmux.conf .zshenv .zshrc"
 DOTFILE_DIR=$(pwd)
 
 for FILE in $FILES; do
+  rm ~/$FILE
   ln -s $DOTFILE_DIR/$FILE ~/$FILE
 done
 
-mkdir ~/.i3
-ln -s $DOTFILE_DIR/.i3/config ~/.i3/config
+rm ~/.config/nvim/init.vim
+echo $DOTFILE_DIR
+ln -s $DOTFILE_DIR/init.vim ~/.config/nvim/init.vim

@@ -1,12 +1,13 @@
 [user]
-  email = cpjkelly@gmail.com
-  name = Chris Kelly
+  email = andreirtaylor@gmail.com
+  name = Andrei Taylor
 [init]
   # templatedir = ~/.git-template
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  d = difftool
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore.global
 [color]
   ui = true
@@ -18,3 +19,9 @@
   helper = cache --timeout=3600
 [merge]
   tool = vimdiff
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
+[mergetool]
+	path = nvim

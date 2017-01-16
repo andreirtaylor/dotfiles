@@ -1,55 +1,75 @@
+# Path to your oh-my-zsh installation.
+export ZSH=/home/andrei/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+# User configuration
+
+export PATH="/usr/bin/:/usr/bin/:/usr/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:$GOPATH/bin:/home/andrei/go_appengine"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
+
 # exports
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 export TERMINAL=urxvt
 export NODE_PATH=/usr/lib/node_modules:$NODE_PATH
 
-export PATH=~/.gem/ruby/2.1.0/bin:$PATH
-export PATH=~/.gem/ruby/1.9.1/bin:$PATH
-export PATH=~/.gem/ruby/2.1.3/bin:$PATH
-export PATH=~/.gem/ruby/2.0.0/bin:$PATH
-export PATH=~/.gem/ruby/2.2.0/bin:$PATH
-export PATH=/usr/bin/:$PATH
-export PATH=~/games/psychonauts:$PATH
-export PATH=~/.exenv/bin:$PATH
-
-export ECTO_EDITOR=/usr/bin/vim # environment variable allowing `mix ecto.gen.repo` to open config/config.exs
-
-
-eval "$(exenv init -)"
-fpath=( "$HOME/.zfunctions" $fpath )
-
 # aliases
 
-alias v=vim
-alias kr="ps aux | grep redshift | grep -v grep | awk '{print \$2}' | xargs kill"
-alias rnm="sudo systemctl restart NetworkManager.service"
-alias be="bundle exec"
-alias brr="bundle exec rake routes | less"
-alias rs="bundle exec rails server"
-alias rc="bundle exec rails console"
-alias gpo="git push origin HEAD:refs/for/master"
-alias -g mps="mix phoenix.server" # inline alias for running a phoenix server in iex
-alias mpr="mix phoenix.routes"
-alias cl="clear"
-alias -g setbg="feh --bg-scale"
-alias xmm="xmodmap /home/cpjk/.Xmodmap"
-
-# linux-specific aliases
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  alias chrome="google-chrome-stable 2>>! ~/.log/chrome.log &" # start chrome with logging to a file
-  alias redshift="redshift 2>>! ~/.log/redshift.log &" # start redshift with logging to a file
-  alias i3lock="i3lock -i ~/.i3/i3lock_image"
-  alias mouseconfig="roccatkonepuremilitaryconfig" # alias for my mouse's config program
-fi
 
 # 10ms timeout for key sequences
 KEYTIMEOUT=1
-
-# make chruby executable visible
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -62,18 +82,52 @@ SAVEHIST=10000
 setopt extendedglob
 unsetopt beep # prevent terminal beeping (fuck that noise)
 bindkey -v # zsh vim-mode
-#
-# virtualenvwrapper config
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
 
 # set zsh prompt
 autoload -Uz promptinit
 promptinit
 prompt pure
 
-# Added by compinstall
-zstyle :compinstall filename '/home/cpjk/.zshrc'
-autoload -Uz compinit
-compinit
-# End compinstall
+fpath=(~/.zsh/completion $fpath)
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Start TMUX
+# You have to install tmux
+# gem install tmuxinator
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/andrei/Desktop/google-cloud-sdk/path.zsh.inc ]; then
+  source '/home/andrei/Desktop/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /home/andrei/Desktop/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/home/andrei/Desktop/google-cloud-sdk/completion.zsh.inc'
+fi
