@@ -6,10 +6,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/andrei/.config/nvim/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin('/home/andrei/.config/nvim')
+call dein#begin('~/.config/nvim')
 
 " Let dein manage dein
 " Required:
@@ -54,26 +54,17 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
-
-" YouCompleteMe Settings
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
-"let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_min_num_of_chars_for_completion = 2
-
 "End dein Scripts-------------------------
+
+" SETTINGS
 set expandtab
 set softtabstop=2
 set shiftwidth=2
 set noswapfile " do not keep swapfiles
-
 " keep backups in the given backup directory
 set backup
 set backupdir=~/.vim-tmp
 set writebackup " write a backup before overwriting a file
-
 set noerrorbells visualbell t_vb= " disable beeping and window flashing on errors
 set nu " add line numbers
 set numberwidth=1
@@ -82,22 +73,39 @@ set scrolloff=10 " scroll up or down when the cursor less than 10 lines away fro
 set timeoutlen=1000 ttimeoutlen=0 " remove timeout after pressing escape
 set hlsearch " highlight search matches
 set showcmd " show command in bottom bar
+" restrict jsx to only .jsx files
+let g:jsx_pragma_required=1
 
-" Colorscheme configuration
+
+" COLORSCHEME SETTINGS
 set t_Co=256 " set the number of terminal colours
 syntax enable
 set background=dark
 
+
+" YOUCOMPLETEME SETTINGS
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
+"let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_min_num_of_chars_for_completion = 2
+
+" CUSTOM BINDINGS
 " Treat wrapped lines like separate lines when moving in normal mode
 map j gj
 map k gk
-
-" restrict jsx to only .jsx files
-" let g:jsx_pragma_required=1
-
+" Remove trailing whitespace with Q
+nnoremap <silent> Q :%s/[ \t]\+$//g<cr>
 command SP set paste
 command NP set nopaste
+" U = Redo with U
+noremap U <C-r>
+" Copy to the global clipboard with ctrl+c
+noremap <C-c> "+y<cr>
 
+
+" FZY SETTINGS
 function! FzyCommand(choice_command, vim_command)
   try
     let output = system(a:choice_command . " | fzy ")
@@ -113,9 +121,6 @@ endfunction
 nnoremap <leader>e :call FzyCommand("find -type f", ":e")<cr>
 nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<cr>
 nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<cr>
-
-" Remove trailing whitespace with Q
-nnoremap <silent> Q :%s/[ \t]\+$//g<cr>
 
 " GO SETTINGS
 " Respect tabs in go
@@ -148,13 +153,13 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
 " vim-tmux-navigator
-" let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_no_mappings = 1
 
-" nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-" nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-" nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-" nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 " Helpful Key strokes
 " "+y    copies to the system keyboard
