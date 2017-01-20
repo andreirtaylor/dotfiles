@@ -9,6 +9,7 @@ alias boolean="cd ~/github/boolean"
 alias github='cd ~/github'
 alias godir='cd $GOPATH/src/github.com/andreirtaylor'
 alias ctci="~/Dropbox/Programming/ctci"
+alias dotfiles="~/github/dotfiles"
 
 # Commands
 alias rs="exec $SHELL -l"
@@ -48,6 +49,7 @@ alias ceng455="~/Dropbox/UVic/CENG455"
 alias seng474="~/Dropbox/UVic/SENG474"
 alias csc360="~/Dropbox/UVic/CSC360"
 alias csc370="~/Dropbox/UVic/CSC370"
+alias sshuvic="ssh artaylor@linux.csc.uvic.ca"
 
 # Go stuff
 export GOPATH="$HOME/github/go"
