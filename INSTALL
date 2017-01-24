@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=".bashrc .git .gitconfig .profile .tmux.conf .zshenv .zshrc"
+FILES=".bashrc .gitconfig .profile .tmux.conf .zshenv .zshrc"
 DOTFILE_DIR=$(pwd)
 
 for FILE in $FILES; do
