@@ -10,6 +10,8 @@ alias github='cd ~/github'
 alias godir='cd $GOPATH/src/github.com/andreirtaylor'
 alias ctci="~/Dropbox/Programming/ctci"
 alias dotfiles="~/github/dotfiles"
+alias fertC="~/$GOPATH/src/github.com/andreirtaylor/fertileCrescent"
+alias kaa="~/github/Kaa"
 
 # Commands
 alias rs="exec $SHELL -l"

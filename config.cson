@@ -1,0 +1,28 @@
+# to install move cson file to 
+# ~/.atom/config.cson
+# then run this to copy over all my installed packages
+# apm install --packages-file package-list.txt
+"*":
+  core:
+    audioBeep: false
+    disabledPackages: [
+      "markdown-preview"
+      "git-diff"
+    ]
+    telemetryConsent: "limited"
+  editor:
+    invisibles: {}
+    scrollPastEnd: true
+  "exception-reporting":
+    userId: "d853e663-4c0d-7af8-bb7c-991ca59cfb27"
+  "markdown-image-helper":
+    withFormatting: true
+  "markdown-preview":
+    breakOnSingleNewline: true
+  "markdown-preview-plus":
+    breakOnSingleNewline: true
+    enableLatexRenderingByDefault: true
+  "pdf-view":
+    fitToWidthOnOpen: true
+  welcome:
+    showOnStartup: false

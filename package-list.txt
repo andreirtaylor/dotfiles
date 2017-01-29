@@ -1,0 +1,8 @@
+markdown-image-helper@1.0.4
+
+gfm-pdf@0.3.4
+markdown-image-helper@1.0.4
+markdown-preview-plus@2.4.0
+pomodoro@1.1.0
+vim-mode-plus@0.82.0
+

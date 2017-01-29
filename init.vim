@@ -90,6 +90,7 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_min_num_of_chars_for_completion = 2
+set complete=.,w,b,u,t,i,d
 
 " CUSTOM BINDINGS
 " Treat wrapped lines like separate lines when moving in normal mode
@@ -150,7 +151,7 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " add/remove impors on save
-let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "goimports"
 
 " vim-tmux-navigator
 let g:tmux_navigator_no_mappings = 1
