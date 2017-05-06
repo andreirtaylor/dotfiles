@@ -73,8 +73,9 @@ set scrolloff=10 " scroll up or down when the cursor less than 10 lines away fro
 set timeoutlen=1000 ttimeoutlen=0 " remove timeout after pressing escape
 set hlsearch " highlight search matches
 set showcmd " show command in bottom bar
+set ignorecase
 " restrict jsx to only .jsx files
-let g:jsx_pragma_required=1
+" let g:jsx_pragma_required=1
 
 
 " COLORSCHEME SETTINGS
@@ -90,7 +91,7 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_min_num_of_chars_for_completion = 2
-set complete=.,w,b,u,t,i,d
+set complete=.,w,b,u,t,
 
 " CUSTOM BINDINGS
 " Treat wrapped lines like separate lines when moving in normal mode
@@ -98,6 +99,11 @@ map j gj
 map k gk
 " Remove trailing whitespace with Q
 nnoremap <silent> Q :%s/[ \t]\+$//g<cr>
+
+" c tools 
+autocmd FileType c,h nmap <leader>c :w<CR>:!make<Cr>
+autocmd FileType c,h nmap <leader>r :w<CR>:!tmux send-keys -t right "make run" C-m <cr><cr>
+
 command SP set paste
 command NP set nopaste
 " U = Redo with U
@@ -132,6 +138,7 @@ autocmd FileType go set shiftwidth=8
 autocmd FileType go set nolist
 au BufRead,BufNewFile  gtpl set filetype=html
 
+
 " Sets how long tests will run before timing out
 let g:go_test_timeout = '10s'
 " gd (by default) will take you to the declaration of a function
@@ -143,6 +150,8 @@ autocmd FileType go nmap <leader>c <Plug>(go-coverage)
 autocmd FileType go nmap <leader>n <Plug>(go-rename)
 autocmd FileType go nmap <leader>q <Plug>(go-doc)
 autocmd FileType go nmap <leader>i <Plug>(go-install)
+autocmd FileType go nmap <leader>y :!tmux send-keys -t right "go test -v" C-m <cr><cr>
+autocmd FileType go nmap <leader>g :!tmux send-keys -t right Up C-m <cr><cr>
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -154,13 +163,13 @@ let g:go_highlight_build_constraints = 1
 "let g:go_fmt_command = "goimports"
 
 " vim-tmux-navigator
-let g:tmux_navigator_no_mappings = 1
+"let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+"nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 " Helpful Key strokes
 " "+y    copies to the system keyboard
