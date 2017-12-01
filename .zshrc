@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/bin/:/usr/bin/:/usr/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:$GOPATH/bin:/home/andrei/go_appengine"
+export PATH="/usr/bin/:/usr/bin/:/usr/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:$GOPATH/bin:/home/andrei/go_appengine:/home/andrei/github/apache-storm-1.1.0/bin:/home/andrei/.cargo/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -126,3 +126,6 @@ fi
 if [ -f /home/andrei/Desktop/google-cloud-sdk/completion.zsh.inc ]; then
   source '/home/andrei/Desktop/google-cloud-sdk/completion.zsh.inc'
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

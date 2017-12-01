@@ -36,9 +36,21 @@ call dein#add('mxw/vim-jsx')
 call dein#add('ervandew/supertab')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('keith/tmux.vim')
+call dein#add('posva/vim-vue')
+call dein#add('Shougo/deoplete.nvim')
+call dein#add('mhartington/nvim-typescript')
+call dein#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
+call dein#add('zchee/deoplete-clang')
+call dein#add('artur-shaik/vim-javacomplete2')
+
+" Rust Baby
+" You need to install a bunch of stuff... check the readme....
+call dein#add('sebastianmarkow/deoplete-rust')
+call dein#add('rust-lang/rust.vim')
+
 " Golang bundles
 call dein#add('fatih/vim-go')
-call dein#add('Valloric/YouCompleteMe',{'build': './install.py --clang-completer --gocode-complete --tern-completer'})
+call dein#add('zchee/deoplete-go', {'build': 'make'})
 
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -55,6 +67,12 @@ if dein#check_install()
   call dein#install()
 endif
 "End dein Scripts-------------------------
+
+" Deoplete stuff
+
+let g:deoplete#sources#clang#libclang_path="/usr/lib/x86_64-linux-gnu/libclang-4.0.so.1"
+let g:deoplete#sources#clang#std={'c': 'c11', 'cpp': 'c++1z', 'objc': 'c11', 'objcpp': 'c++1z'}
+let g:deoplete#sources#clang#clang_header="/usr/lib/clang"
 
 " SETTINGS
 set expandtab
@@ -77,21 +95,13 @@ set ignorecase
 " restrict jsx to only .jsx files
 " let g:jsx_pragma_required=1
 
+let g:deoplete#enable_at_startup = 1
 
 " COLORSCHEME SETTINGS
 set t_Co=256 " set the number of terminal colours
 syntax enable
 set background=dark
 
-
-" YOUCOMPLETEME SETTINGS
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
-"let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_min_num_of_chars_for_completion = 2
-set complete=.,w,b,u,t,
 
 " CUSTOM BINDINGS
 " Treat wrapped lines like separate lines when moving in normal mode
@@ -129,6 +139,12 @@ nnoremap <leader>e :call FzyCommand("find -type f", ":e")<cr>
 nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<cr>
 nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<cr>
 
+" RUST SETTINGS
+let g:deoplete#sources#rust#racer_binary='/home/andrei/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/andrei/github/rust/src'
+let g:deoplete#sources#rust#show_duplicates=1
+let g:deoplete#sources#rust#disable_keymap=1
+
 " GO SETTINGS
 " Respect tabs in go
 autocmd FileType go set noexpandtab
@@ -160,7 +176,6 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 " add/remove impors on save
-"let g:go_fmt_command = "goimports"
 
 " vim-tmux-navigator
 "let g:tmux_navigator_no_mappings = 1
@@ -173,3 +188,4 @@ let g:go_highlight_build_constraints = 1
 
 " Helpful Key strokes
 " "+y    copies to the system keyboard
+

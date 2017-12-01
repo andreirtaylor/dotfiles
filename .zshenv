@@ -30,7 +30,7 @@ alias npmrs="npm run-script"
 
 # Edit config files
 alias zshenv='v ~/.zshenv'
-alias zshrc='v ~/.zshenv'
+alias zshrc='v ~/.zshrc'
 alias vrc='v ~/.config/nvim/init.vim'
 
 # Git aliases
@@ -64,44 +64,24 @@ alias sshmypi="ssh -i '~/Dropbox/mypinotify.pem' ubuntu@ec2-54-218-109-214.us-we
 alias sshmypidb="ssh -i '~/Dropbox/mypinotify.pem' ec2-user@ec2-54-213-87-4.us-west-2.compute.amazonaws.com"
 alias sshmypidb2="ssh -i '~/Dropbox/mypinotify.pem' ec2-user@ec2-54-187-185-157.us-west-2.compute.amazonaws.com"
 
-
-function runNvim {
-  args=()
-  for var in $@
-  do
-    touch "$var" &> /dev/null
-    ret=$?
-    if [ $ret -ne 0 ]; then
-      echo "permission denied"
-      return -1
-    fi
-    var="/app$PWD/`realpath --relative-to=$PWD $var`"
-    echo $var
-    args+=$var
-  done
-
-  docker run --workdir="/app/$PWD" \
-    --interactive=true\
-    --tty \
-    -v /:/app \
-    --name neovim \
-    erroneousboat/neovim $args
-
-  docker rm neovim
-}
-
-# This works but isnt really necessary
-#alias dvim='runNvim'
-
 # linux-specific aliases
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias chrome="google-chrome-stable 2>>! ~/.log/chrome.log &" # start chrome with logging to a file
   alias redshift="redshift 2>>! ~/.log/redshift.log &" # start redshift with logging to a file
 fi
 
-# history
+function hist {
+  history | sed 's/^\s*[0-9]\+\s*//' | fzy
+}
 
-alias hist= "history | sed 's/^\s*[0-9]\+\s*//' | fzy"
+function get_my_history {
+  eval hist
+}
+
+export AWS_ACCESS_KEY_ID="AKIAIOO3K7B7TB5LJI5A"
+export AWS_SECRET_ACCESS_KEY="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"
+export AWS_REGION="us-west-2"
+
 
 zle -N get_my_history
 bindkey '^R' get_my_history 
