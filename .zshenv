@@ -59,11 +59,6 @@ alias sshuvic="ssh artaylor@linux.csc.uvic.ca"
 # Go stuff
 export GOPATH="$HOME/github/go"
 
-# NW Hacks
-alias sshmypi="ssh -i '~/Dropbox/mypinotify.pem' ubuntu@ec2-54-218-109-214.us-west-2.compute.amazonaws.com"
-alias sshmypidb="ssh -i '~/Dropbox/mypinotify.pem' ec2-user@ec2-54-213-87-4.us-west-2.compute.amazonaws.com"
-alias sshmypidb2="ssh -i '~/Dropbox/mypinotify.pem' ec2-user@ec2-54-187-185-157.us-west-2.compute.amazonaws.com"
-
 # linux-specific aliases
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias chrome="google-chrome-stable 2>>! ~/.log/chrome.log &" # start chrome with logging to a file
@@ -77,11 +72,6 @@ function hist {
 function get_my_history {
   eval hist
 }
-
-export AWS_ACCESS_KEY_ID="AKIAIOO3K7B7TB5LJI5A"
-export AWS_SECRET_ACCESS_KEY="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"
-export AWS_REGION="us-west-2"
-
 
 zle -N get_my_history
 bindkey '^R' get_my_history 
